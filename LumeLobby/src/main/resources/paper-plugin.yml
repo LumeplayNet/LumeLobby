@@ -1,0 +1,38 @@
+name: ${name}
+version: ${version}
+main: de.felix.lumelobby.LumeLobbyPlugin
+api-version: "1.21"
+authors: ["felix"]
+description: "Lobby/Hub management for Lumeplay gamemodes"
+load: STARTUP
+
+dependencies:
+  server:
+    LumeCommands:
+      load: BEFORE
+      required: true
+
+permissions:
+  lumelobby.use:
+    description: "Use basic lobby commands"
+    default: true
+  lumelobby.admin:
+    description: "Admin actions for lobby/hub"
+    default: op
+    children:
+      lumelobby.use: true
+  lumelobby.cosmetics.wings:
+    description: "Use cosmetics: wings"
+    default: false
+  lumelobby.cosmetics.trail:
+    description: "Use cosmetics: trail"
+    default: false
+  lumelobby.cosmetics.halo:
+    description: "Use cosmetics: halo"
+    default: false
+  lumelobby.cosmetics.aura:
+    description: "Use cosmetics: aura"
+    default: false
+  lumelobby.cosmetics.gadget:
+    description: "Use cosmetics: gadget"
+    default: false

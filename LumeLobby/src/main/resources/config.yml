@@ -1,0 +1,155 @@
+hub:
+  enabled: true
+  createHubWorld: true
+  worldName: "lume_hub"
+  teleportOnJoin: true
+  protection:
+    enabled: true
+    clearMobsOnLoad: true
+    disableAdvancements: true
+  # Optional explicit hub spawn:
+  # spawn: [0.5, 120, 0.5, 180, 0]
+  hubY: 120
+  # Optional hub template:
+  # - Put ONE world folder into: plugins/LumeLobby/templates/hub/<WorldName>/level.dat
+  # - The template is imported on startup only if the hub world folder doesn't exist yet.
+
+lobby:
+  enabled: true
+  # If true, /lobby and all lobby API calls will use the Hub world/spawn.
+  # When enabled, lobby world settings below are ignored.
+  sameAsHub: true
+  createLobbyWorld: true
+  worldName: "lume_lobby"
+  teleportOnJoin: false
+  # - always: always send to lobby
+  # - during_start: ask external router (e.g. SkyWars state)
+  # - never: never auto-teleport on join
+  teleportOnJoinMode: "never"
+  protection:
+    enabled: true
+    clearMobsOnLoad: true
+    disableAdvancements: true
+  # Optional explicit lobby spawn:
+  # spawn: [0.5, 120, 0.5, 180, 0]
+  lobbyY: 120
+  # Optional lobby template:
+  # - Put ONE world folder into: plugins/LumeLobby/templates/lobby/<WorldName>/level.dat
+  # - The template is imported on startup only if the lobby world folder doesn't exist yet.
+
+hubUx:
+  enabled: true
+  # Optional override: hub UX applies only in these worlds.
+  # If empty, it applies to hub.worldName (+ lobby.worldName if lobby.sameAsHub=true).
+  worlds: []
+  cosmetics:
+    enabled: true
+    # Cosmetics update rate (lower = smoother, higher = less particles)
+    updateTicks: 2
+    menuItem:
+      enabled: true
+      slot: 4
+      material: "ENDER_CHEST"
+      name: "&b&lCosmetics"
+      lore:
+        - "&7Right click to open"
+    gadgetItem:
+      slot: 2
+      material: "BLAZE_ROD"
+      name: "&e&lGadget"
+      lore:
+        - "&7Right click"
+        - "&7Small boost + particles"
+    gadget:
+      cooldownMs: 2000
+      velocityY: 0.35
+      velocityForward: 0.7
+      particle: "FIREWORK"
+      particleCount: 35
+    particles:
+      wings: "END_ROD"
+      trail: "CLOUD"
+      halo: "FIREWORK"
+      aura: "ENCHANT"
+    wings:
+      points: 9
+      flapStrength: 0.08
+      flapPeriodMs: 1500
+    halo:
+      radius: 0.45
+      points: 12
+      periodMs: 2000
+  scoreboard:
+    enabled: true
+    updateTicks: 20
+    title: "&bLumeplay"
+    lines:
+      - "&b&lLumeplay"
+      - "&7%date% &8• &7%time%"
+      - "&7"
+      - "&7Name: &f%player%"
+      - "&7Online: &f%online%&7/&f%max%"
+      - "&7Ping: &f%ping%ms"
+      - "&7TPS: &f%tps% &8(&f%mspt%mspt&8)"
+      - "&7"
+      - "&b/sw join &8- &7Quick Play"
+      - "&7Doublejump: &fSpace x2"
+      - "&7"
+      - "&bplay.lumeplay.net"
+  bossbar:
+    enabled: true
+    title: "&bLumeplay"
+    color: "BLUE"
+    style: "SOLID"
+    progress: 1.0
+  doubleJump:
+    enabled: true
+    velocityY: 0.9
+    velocityForward: 0.8
+    cooldownTicks: 20
+    sound:
+      enabled: true
+      name: "ENTITY_BAT_TAKEOFF"
+      volume: 1.0
+      pitch: 1.2
+  loadout:
+    enabled: true
+    clearInventory: false
+    compass:
+      enabled: true
+      slot: 0
+      name: "&b&lPlay"
+      lore:
+        - "&7Right click to open the menu."
+    # Cosmetics:
+    # - Use /cosmetics or the Cosmetics item (hubUx.cosmetics.menuItem)
+    # - Unlock via LuckPerms/Permissions: lumelobby.cosmetics.wings / trail / halo / aura / gadget
+    playerToggle:
+      enabled: true
+      slot: 8
+      show:
+        material: "LIME_DYE"
+        name: "&a&lPlayers: Shown"
+        lore:
+          - "&7Right click to hide players."
+      hide:
+        material: "GRAY_DYE"
+        name: "&7&lPlayers: Hidden"
+        lore:
+          - "&7Right click to show players."
+  menu:
+    enabled: true
+    title: "&bLumeplay"
+    skywars:
+      enabled: true
+      slot: 11
+      name: "&b&lSkyWars"
+      lore:
+        - "&7Quick play"
+      command: "sw join"
+
+motd:
+  enabled: true
+  lines:
+  - "&b&lLumeplay &7● &fSkyWars"
+  - "&8➥ &7Online: &b%online%&7/&b%max% &8| &fplay.lumeplay.net"
